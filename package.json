@@ -1,0 +1,12 @@
+{
+  "name": "yuyi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ForJing/Yuyi.git",
+  "author": "forjing <xiaodoubao1994@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
