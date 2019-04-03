@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   mode: 'development',
   devServer: {
     contentBase: './dist',
@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
+    filename: '[name].[hash].js',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -25,7 +25,14 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
-
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader', // creates style nodes from JS strings
+          'css-loader', // translates CSS into CommonJS
+          'sass-loader', // compiles Sass to CSS, using Node Sass by default
+        ],
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -40,6 +47,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Yuyi',
+      template: 'public/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
